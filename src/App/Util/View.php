@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Util;
+namespace App\App\Util;
 
 class View
 {
@@ -8,7 +8,7 @@ class View
 
     public static function init(array $vars = [])
     {
-        //Método responsável por definir os dados iniciais da classe
+        //Método responsável por definir dados como URL(exemplo).
         self::$vars = $vars;
     }
 
@@ -54,13 +54,13 @@ class View
         );
     }
 
-    private function getHeader(): string
+    private static function getHeader(): string
     {
-        return self::render('layout/header');
+        return self::render("layout/header");
     }
 
-    private function getFooter(): string
+    private static function getFooter(): string
     {
-        return self::render('layout/footer');
+        return self::render("layout/footer");
     }
 }
