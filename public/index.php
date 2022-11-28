@@ -2,8 +2,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use App\App\Http\Request as HttpRequest;
 use App\App\Util\View;
 use App\Controllers\HomeController;
+use App\Http\Request;
 use WilliamCosta\DatabaseManager\Database;
 use WilliamCosta\DotEnv\Environment;
 
@@ -21,6 +23,9 @@ View::init([
     'URL' => URL
 ]);
 
-$home = new HomeController();
 
-$home->getHome();
+$request = new HttpRequest();
+
+echo "<pre>";
+var_dump($request);
+echo "</pre>";
