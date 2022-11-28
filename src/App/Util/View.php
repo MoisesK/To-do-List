@@ -38,4 +38,29 @@ class View
             $contentView
         );
     }
+
+    public static function getPage(string $title, mixed $content): mixed
+    {
+        //método que retorna a página genérica
+        return self::render(
+            'layout/page',
+            [
+                "title" => $title,
+                "header" => self::getHeader(),
+                "content" => $content,
+                "footer" => self::getFooter()
+
+            ]
+        );
+    }
+
+    private function getHeader(): string
+    {
+        return self::render('layout/header');
+    }
+
+    private function getFooter(): string
+    {
+        return self::render('layout/footer');
+    }
 }
