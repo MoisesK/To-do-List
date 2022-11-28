@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  web:
+    image: webdevops/php-apache-dev:8.0
+    ports:
+      - "8000:80"
+    volumes:
+      - ../To-do-List:/public
+    environment:
+      - WEB_DOCUMENT_ROOT: /public
+      - WEB_DOCUMENT_INDEX: index.php
+
+
+  db:
+    image: mysql
+    restart: always
+    volumes:
+    - ./db/to_do_list.sql:/docker-entrypoint-initdb.d/setup.sql
+    ports:
+    - "8081:3306"
+    environment:
+      - MYSQL_USER: admin
+      - MYSQL_DATABASE: TodoList
+      - MYSQL_PASSWORD: root
+      - MYSQL_ROOT_PASSWORD: root
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      
+    ports:
+      - "8080:80"
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
