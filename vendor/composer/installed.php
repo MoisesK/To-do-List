@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cf8515cc3d40ff1a317150b850a9895a12132e6e',
+        'reference' => 'dd6f79e23c84522838840c55af71ba3c1d0ae468',
         'name' => 'moises/to-do-list',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cf8515cc3d40ff1a317150b850a9895a12132e6e',
+            'reference' => 'dd6f79e23c84522838840c55af71ba3c1d0ae468',
             'dev_requirement' => false,
         ),
         'squizlabs/php_codesniffer' => array(
