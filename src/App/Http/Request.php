@@ -11,7 +11,7 @@ class Request
     private array $headers = [];
     private Router $router;
 
-    public function __contruct()
+    public function __construct()
     {
         $this->queryParams = $_GET ?? [];
         $this->postVars = $_POST ?? [];
