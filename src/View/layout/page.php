@@ -2,9 +2,11 @@
 
 <body class="bg-dark text-light">
     <div class="container">
+        <div class="justify-content-center">
 
-        {{content}}
+            {{content}}
 
+        </div>
     </div>
 </body>
 
