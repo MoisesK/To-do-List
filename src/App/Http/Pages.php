@@ -7,7 +7,7 @@ use App\Controllers\HomeController;
 
 
 // ROTA HOME
-$obRouter->get('/TESET', [
+$obRouter->get('/', [
     function () {
         return new Response(200, HomeController::getHome());
     }
