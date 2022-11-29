@@ -6,7 +6,7 @@ class Response
 {
     private int $httpCode = 200;
     private array $headers = [];
-    private string $contentType = '';
+    private string $contentType = 'text/html';
     private string $content = '';
 
     public function __contruct(string $httpCode, mixed $content, mixed $contentType = 'text/html')

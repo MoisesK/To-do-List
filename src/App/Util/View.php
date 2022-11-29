@@ -45,8 +45,8 @@ class View
         return self::render(
             'layout/page',
             [
-                "title" => $title,
                 "header" => self::getHeader(),
+                "title" => $title,
                 "content" => $content,
                 "footer" => self::getFooter()
 

@@ -4,11 +4,12 @@ namespace App\App\Http;
 
 class Request
 {
-    private string $httpMethod;
-    private string $uri;
-    private array $queryParams;
-    private array $postVars;
-    private array $headers;
+    private string $httpMethod = '';
+    private string $uri = '';
+    private array $queryParams = [];
+    private array $postVars = [];
+    private array $headers = [];
+    private Router $router;
 
     public function __contruct()
     {
@@ -32,6 +33,11 @@ class Request
     public function getHttpMethod(): string
     {
         return $this->httpMethod;
+    }
+
+    public function getRouter(): Router
+    {
+        return $this->router;
     }
 
     public function getUri(): string

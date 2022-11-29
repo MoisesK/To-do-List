@@ -6,7 +6,7 @@ use App\App\Util\View;
 
 class HomeController
 {
-    public function getHome()
+    public static function getHome()
     {
         $content = View::render('home', [
             "teste" => "teste"
