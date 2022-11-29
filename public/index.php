@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\App\Http\Request as HttpRequest;
+use App\App\Http\Response;
 use App\App\Util\View;
 use App\Controllers\HomeController;
 use App\Http\Request;
@@ -23,9 +24,12 @@ View::init([
     'URL' => URL
 ]);
 
+$home = new HomeController();
 
-$request = new HttpRequest();
+
+$response = new Response();
+$response->sendResponse($home->getHome());
 
 echo "<pre>";
-var_dump($request);
+var_dump($response);
 echo "</pre>";
