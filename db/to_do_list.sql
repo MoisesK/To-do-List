@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Tempo de geração: 28/11/2022 às 17:09
+-- Tempo de geração: 01/12/2022 às 17:45
 -- Versão do servidor: 8.0.31
 -- Versão do PHP: 8.0.19
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `to-do` (
   `id` int NOT NULL,
   `descript` varchar(300) NOT NULL,
-  `stats` timestamp NOT NULL
+  `stats` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
