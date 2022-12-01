@@ -5,16 +5,14 @@ namespace App\Model;
 class Todo
 {
     private int $id;
-    private string $title;
     private string $descript;
-    private string $deadline;
+    private string $status;
 
-    public function __construct(int $id, string $title, string $descript, string $deadline)
+    public function __construct(int $id, string $descript, string $status)
     {
         $this->title = $id;
-        $this->title = $title;
         $this->descript = $descript;
-        $this->deadline = $deadline;
+        $this->status = $status;
     }
 
     public function getId()
@@ -22,10 +20,6 @@ class Todo
         return $this->id;
     }
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
 
     public function getDescript()
     {
@@ -34,6 +28,6 @@ class Todo
 
     public function getDeadline()
     {
-        return $this->deadline;
+        return $this->status;
     }
 }

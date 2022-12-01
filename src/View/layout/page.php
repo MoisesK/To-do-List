@@ -1,11 +1,13 @@
 {{header}}
 
 <body class="bg-dark text-light">
-    <div class="container">
-        <div class="justify-content-center">
+    <div class="container align-content-center">
+        <div class="row justify-content-center mb-5">
+            <div class="col-5">
 
-            {{content}}
+                {{content}}
 
+            </div>
         </div>
     </div>
 </body>

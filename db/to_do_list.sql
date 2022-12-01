@@ -29,9 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `to-do` (
   `id` int NOT NULL,
-  `title` varchar(200) NOT NULL,
   `descript` varchar(300) NOT NULL,
-  `deadline` timestamp NOT NULL
+  `stats` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --

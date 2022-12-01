@@ -8,7 +8,8 @@ class HomeController
 {
     public static function getHome()
     {
-        $content = View::render('home', [
+        $content = View::render('home/home', [
+            "register-todo" => View::render('home/registerTodo'),
             "teste" => "teste"
         ]);
 
