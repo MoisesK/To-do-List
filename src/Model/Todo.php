@@ -52,4 +52,9 @@ class Todo
 
         return true;
     }
+
+    public static function read($where = null, $order = null, $limit = null, $fields = '*')
+    {
+        return (new Database('to-do'))->select($where, $order, $limit, $fields);
+    }
 }

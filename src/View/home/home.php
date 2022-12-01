@@ -14,33 +14,17 @@
         </div>
     </div>
 
-    <div class="container pb-2 ">
-        <table class="shadow table col-3">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col">Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-light">
-                    <td class="d-flex">
-                        Mark
-                        <a>X</a>
-                        <a>D</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    {{items}}
 
-        <div class="d-flex container">
-            <div class="row justify-content-start pt-2">
-                <div class="col-auto">
-                    <p class="text-dark align-items-start ">Total tarefas: 10</p>
-                </div>
+    <div class="d-flex container">
+        <div class="row justify-content-start pt-2">
+            <div class="col-auto">
+                <p class="text-dark align-items-start ">Total tarefas: 10</p>
             </div>
         </div>
-
-
-
     </div>
+
+
+
+</div>
 </div>
