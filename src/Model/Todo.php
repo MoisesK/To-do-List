@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\App\Http\Request;
+use PDOStatement;
 use WilliamCosta\DatabaseManager\Database;
 
 class Todo
@@ -11,7 +11,7 @@ class Todo
     private string $descript;
     private string $status = '0';
 
-    public function __construct(string $descript)
+    public function newTodo(string $descript)
     {
         $this->setDescript($descript);
     }
@@ -52,6 +52,9 @@ class Todo
 
         return true;
     }
+    /** 
+     *@return PDOStatement
+     */
 
     public static function read($where = null, $order = null, $limit = null, $fields = '*')
     {

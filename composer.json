@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        }
+        },
+        "files": [
+            "src/App/Helpers/Session.php"
+        ]
     },
     "require": {
         "william-costa/dot-env": "^0.1.0",

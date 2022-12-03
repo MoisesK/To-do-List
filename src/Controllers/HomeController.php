@@ -26,7 +26,9 @@ class HomeController
 
         $descript = filter_var($postVars['descript-todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $todo = new Todo($descript);
+        $todo = new Todo();
+
+        $todo->newTodo($descript);
 
         $todo->create();
 
@@ -40,12 +42,14 @@ class HomeController
 
         $results = Todo::read($where);
 
-        while ($objTodo = $results->fetchObject(Todo::class)) {
+        while ($results = $results->fetchObject(Todo::class)) {
+
             $items .= View::render('home/items', [
-                'descript' => $objTodo()->getDescript
+                'descript' => $results->getDescript(),
+                'id' => $results->getId()
             ]);
 
             return $items;
-        }
+        };
     }
 }
