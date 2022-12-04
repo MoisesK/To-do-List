@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-use App\App\Http\Request;
 use WilliamCosta\DatabaseManager\Database;
 
 class Todo
