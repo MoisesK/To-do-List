@@ -1,10 +1,8 @@
-<tbody>
-    <tr class="table-light">
+    <tr class="table-light s">
         <td class="d-flex">
-            <h3>{{descript}}</h3>
+            <h5>{{descript}}</h5>
         </td>
         <td>
             {{actionsButton}}
         </td>
     </tr>
-</tbody>

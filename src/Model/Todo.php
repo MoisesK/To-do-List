@@ -55,7 +55,7 @@ class Todo
 
    public function read(): mixed
    {
-      $query = 'SELECT * FROM `todoes` ORDER BY stats ASC';
+      $query = "SELECT * FROM `todoes` ";
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->execute();
@@ -74,6 +74,17 @@ class Todo
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->bindValue(1, $id);
+
+      $stmt->execute();
+   }
+
+   public function conclude($id)
+   {
+      $query = 'UPDATE `todoes` SET stats = ? WHERE id = ?';
+
+      $stmt = Connect::getConn()->prepare($query);
+      $stmt->bindValue(1, 1);
+      $stmt->bindValue(2, $id);
 
       $stmt->execute();
    }

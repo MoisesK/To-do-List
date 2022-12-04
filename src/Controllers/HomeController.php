@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\App\Http\Request;
 use App\App\Util\View;
-use App\Library\Connection\Connect;
 use App\Model\Todo;
 
 class HomeController
@@ -13,23 +12,14 @@ class HomeController
     {
         $content = View::render('home/home', [
             "register-todo" => View::render('home/registerTodo'),
-            "items" => self::getTodoes()
+            "items" => self::getTodoes(),
+            "total" => "total",
+            "conclude" => "concluidos"
         ]);
 
         return View::getPage('TO-DO HOME', $content);
     }
 
-    public static function newTodo(Request $request)
-    {
-
-        $postVars = $request->getPostVars();
-
-        $descript = filter_var($postVars['descript-todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        $todo = new Todo($descript);
-
-        $todo->create($todo);
-    }
 
     public static function getTodoes()
     {
@@ -58,17 +48,26 @@ class HomeController
 
         switch ($postVars) {
             case isset($postVars['createButton']):
-                self::newTodo($request);
+
+                $postVars = $request->getPostVars();
+                $descript = filter_var($postVars['descript-todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $todo = new Todo($descript);
+                $todo->create($todo);
+
                 return self::getHome();
                 break;
 
             case isset($postVars['deleteButton']):
+
                 $todo = new Todo('');
                 $todo->delete($postVars['deleteButton']);
+
                 return self::getHome();
                 break;
 
-            case isset($postVars['ConcludeButton']):
+            case isset($postVars['concludeButton']):
+                $todo = new Todo('');
+                $todo->conclude($postVars['concludeButton']);
 
                 return self::getHome();
                 break;
