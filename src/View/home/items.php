@@ -1,9 +1,10 @@
 <tbody>
     <tr class="table-light">
         <td class="d-flex">
-            {{descript}}
-            <a>X</a>
-            <a>D</a>
+            <h3>{{descript}}</h3>
+        </td>
+        <td>
+            {{actionsButton}}
         </td>
     </tr>
 </tbody>

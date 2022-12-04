@@ -19,6 +19,8 @@
             <thead>
                 <tr class="table-dark">
                     <th scope="col">Descrição</th>
+                    <th scope="col"></th>
+
                 </tr>
             </thead>
 
