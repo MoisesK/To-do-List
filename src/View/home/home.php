@@ -19,19 +19,21 @@
             <thead>
                 <tr class="table-dark">
                     <th scope="col">Descrição</th>
-                    <th scope="col"></th>
-
+                    <th scope=""></th>
                 </tr>
             </thead>
-
-            {{items}}
-
+            <tbody>
+                {{items}}
+            </tbody>
         </table>
 
         <div class="d-flex container">
             <div class="row justify-content-start pt-2">
-                <div class="col-auto">
-                    <p class="text-dark align-items-start ">Total tarefas: 10</p>
+                <div class="col-6">
+                    <p class="text-dark align-items-start ">Total tarefas: {{total}}</p>
+                </div>
+                <div class="col-6">
+                    <p class="text-dark align-items-start ">Concluídas: {{conclude}}</p>
                 </div>
             </div>
         </div>
