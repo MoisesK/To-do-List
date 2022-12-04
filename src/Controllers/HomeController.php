@@ -29,22 +29,51 @@ class HomeController
         $todo = new Todo($descript);
 
         $todo->create($todo);
-
-        return self::getHome();
     }
 
     public static function getTodoes()
     {
 
-        $todoes = new Todo('todoes');
+        $todoes = new Todo('');
         $todoes->read();
+        $items = '';
 
         foreach ($todoes->read() as $todo) {
             $items .= View::render('home/items', [
-                'descript' => $todo['descript']
+                'descript' => $todo['descript'],
+                'actionsButton' => View::render('home/actionButtons', [
+                    'id' => $todo['id']
+                ])
             ]);
         }
 
+
         return $items;
+    }
+
+
+    public static function actionsTodoes(Request $request)
+    {
+        $postVars = $request->getPostVars();
+
+        switch ($postVars) {
+            case isset($postVars['createButton']):
+                self::newTodo($request);
+                return self::getHome();
+                break;
+
+            case isset($postVars['deleteButton']):
+                $todo = new Todo('');
+                $todo->delete($postVars['deleteButton']);
+                return self::getHome();
+                break;
+
+            case isset($postVars['ConcludeButton']):
+
+                return self::getHome();
+                break;
+            default:
+                break;
+        }
     }
 }

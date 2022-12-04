@@ -4,7 +4,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\App\Http\Router;
 use App\App\Util\View;
-use App\Model\Todo;
 use WilliamCosta\DotEnv\Environment;
 
 // Carrega Variaveis de ambiente
