@@ -2,17 +2,23 @@
 
 namespace App\Library\Connection;
 
-// Modelo para caso queira conectar ao banco de dados sem utilizar dependencia.
+use PDO;
+use WilliamCosta\DotEnv\Environment;
 
-abstract class Connect
+//CARREGAR VARIÁVEIS DE AMBIENTE DO PROJETO
+Environment::load(__DIR__ . '/../../');
+
+class Connect
 {
-
     private static $instance;
-    public static function getConn()
+
+    public static function getConn(): PDO
+
     {
         if (!isset(self::$instance)) {
-            self::$instance = new \PDO("mysql:host=localhost;dbname=crud;charset=utf8", "root", "");
+            self::$instance = new PDO("mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_NAME') . ";charset=utf8", getenv('DB_USER'), getenv('DB_PASS'));
         }
+
         return self::$instance;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Model;
 
-use App\App\Http\Request;
-use WilliamCosta\DatabaseManager\Database;
+use App\App\Util\View;
+use App\Library\Connection\Connect;
 
 class Todo
 {
@@ -11,45 +11,60 @@ class Todo
     private string $descript;
     private string $status = '0';
 
-    public function __construct(string $descript)
+    public function __construct(string $descript = null)
     {
         $this->setDescript($descript);
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
 
-    public function getDescript()
+    public function getDescript(): string
     {
         return $this->descript;
     }
 
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->status;
     }
 
-    private function setDescript($d)
+    private function setDescript($d): void
     {
         $this->descript = $d;
     }
 
-    private function setStatus($s)
+    private function setStatus($st): void
     {
-        $this->status = $s;
+        $this->status = $st;
     }
 
-    public function create(): bool
+    public function create(Todo $todo): void
     {
-        $this->id = (new Database('to-do'))->insert([
-            'id' => NULL,
-            'descript' => $this->descript,
-            'stats' => $this->status
-        ]);
+        $query = 'INSERT INTO `todoes` (descript, stats) VALUES (?,?)';
 
-        return true;
+        $stmt = Connect::getConn()->prepare($query);
+        $stmt->bindValue(1, $todo->getDescript());
+        $stmt->bindValue(2, $todo->getStatus());
+
+        $stmt->execute();
+    }
+
+    public function read(): mixed
+    {
+        $query = 'SELECT * FROM `todoes` ORDER BY stats ASC';
+
+        $stmt = Connect::getConn()->prepare($query);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll();
+            return $results;
+        } else {
+            return [];
+        };
     }
 }

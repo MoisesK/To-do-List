@@ -21,15 +21,9 @@
                     <th scope="col">Descrição</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="table-light">
-                    <td class="d-flex">
-                        Mark
-                        <a>X</a>
-                        <a>D</a>
-                    </td>
-                </tr>
-            </tbody>
+
+            {{items}}
+
         </table>
 
         <div class="d-flex container">
