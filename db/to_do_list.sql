@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `to-do`
+-- Estrutura para tabela `todoes`
 --
 
-CREATE TABLE `to-do` (
+CREATE TABLE `todoes` (
   `id` int NOT NULL,
   `descript` varchar(300) NOT NULL,
   `stats` tinyint(1) NOT NULL
@@ -40,7 +40,7 @@ CREATE TABLE `to-do` (
 --
 -- Índices de tabela `to-do`
 --
-ALTER TABLE `to-do`
+ALTER TABLE `todoes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -50,7 +50,7 @@ ALTER TABLE `to-do`
 --
 -- AUTO_INCREMENT de tabela `to-do`
 --
-ALTER TABLE `to-do`
+ALTER TABLE `todoes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 

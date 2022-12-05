@@ -68,6 +68,16 @@ class Todo
       };
    }
 
+   public function readAdvanced($query): mixed
+   {
+      $query = $query;
+
+      $stmt = Connect::getConn()->prepare($query);
+      $stmt->execute();
+
+      return $stmt->rowCount();
+   }
+
    public function delete($id)
    {
       $query = 'DELETE FROM `todoes` WHERE id = ?';

@@ -28,12 +28,12 @@
         </table>
 
         <div class="d-flex container">
-            <div class="row justify-content-start pt-2">
-                <div class="col-6">
-                    <p class="text-dark align-items-start ">Total tarefas: {{total}}</p>
+            <div class="row pt-2">
+                <div class="col-3 me-3">
+                    <span class="badge bg-primary">Tarefas: {{total}}</span>
                 </div>
-                <div class="col-6">
-                    <p class="text-dark align-items-start ">Concluídas: {{conclude}}</p>
+                <div class="col-6 ms-4">
+                    <span class="badge bg-success">Concluídas: {{conclude}}</span>
                 </div>
             </div>
         </div>
