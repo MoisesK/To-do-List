@@ -6,6 +6,9 @@ use App\App\Http\Router;
 use App\App\Util\View;
 use WilliamCosta\DotEnv\Environment;
 
+//Inicia e carrega SESSÃO de mensagens
+session_start();
+
 // Carrega Variaveis de ambiente
 Environment::load(__DIR__ . '/../');
 

@@ -13,8 +13,7 @@ class HomeController
         $content = View::render('home/home', [
             "register-todo" => View::render('home/registerTodo'),
             "items" => self::getTodoes(),
-            "total" => self::getQtdTodoes("stats", 0),
-            "conclude" => self::getQtdTodoes("stats", 1)
+            "total" => self::getQtdTodoes("stats", 0)
         ]);
 
         return View::getPage('TO-DO HOME', $content);
@@ -36,7 +35,6 @@ class HomeController
                 ])
             ]);
         }
-
 
         return $items;
     }

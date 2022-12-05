@@ -9,7 +9,7 @@ class Todo
 {
    private int $id;
    private string $descript;
-   private string $status = '0';
+   private int $status = 0;
 
    public function __construct(string $descript)
    {
@@ -27,7 +27,7 @@ class Todo
       return $this->descript;
    }
 
-   public function getStatus(): int
+   public function getStatus(): string
    {
       return $this->status;
    }
@@ -55,7 +55,7 @@ class Todo
 
    public function read(): mixed
    {
-      $query = "SELECT * FROM `todoes` ";
+      $query = "SELECT * FROM `todoes` WHERE 'stats' = 0";
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->execute();
@@ -90,7 +90,7 @@ class Todo
 
    public function conclude($id)
    {
-      $query = 'UPDATE `todoes` SET stats = ? WHERE id = ?';
+      $query = "UPDATE `todoes` SET stats = ? WHERE id = ?";
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->bindValue(1, 1);

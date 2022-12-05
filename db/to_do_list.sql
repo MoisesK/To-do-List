@@ -13,12 +13,7 @@ SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `to_do_list`
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHAtinyint
 --
 
 -- --------------------------------------------------------
@@ -30,7 +25,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `todoes` (
   `id` int NOT NULL,
   `descript` varchar(300) NOT NULL,
-  `stats` tinyint(1) NOT NULL
+  `stats` int(0,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --

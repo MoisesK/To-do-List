@@ -9,7 +9,7 @@
     </div>
 
     <div class="container">
-        <div class="row justify-content-center align-item-center pb-4">
+        <div class="row justify-content-center align-item-center pb-3">
             {{register-todo}}
         </div>
     </div>
@@ -29,11 +29,8 @@
 
         <div class="d-flex container">
             <div class="row pt-2">
-                <div class="col-3 me-3">
-                    <span class="badge bg-primary">Tarefas: {{total}}</span>
-                </div>
-                <div class="col-6 ms-4">
-                    <span class="badge bg-success">Concluídas: {{conclude}}</span>
+                <div class="col-6 me-3">
+                    <span class="badge bg-primary">Total de Tarefas: {{total}}</span>
                 </div>
             </div>
         </div>
