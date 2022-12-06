@@ -1,0 +1,36 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: '3.1'
+services:
+    mysql:
+        image: 'mysql'
+        restart: 'always'
+        working_dir: /public
+        volumes:
+            - ./db/to_do_list.sql:/docker-entrypoint-initdb.d/setup.sql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=to_do_list
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=root
+        ports:
+            - '8081:3306'
+
+    webserver:
+        image: 'nginx:alpine'
+        working_dir: /public
+        volumes:
+            - '../To-do-List:/public'
+            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '8008:80'
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        working_dir: /public
+        environment:
+            PHP_IDE_CONFIG: 'serverName=Docker'
+        volumes:
+            - '../To-do-List:/public'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.1/fpm/conf.d/99-overrides.ini'

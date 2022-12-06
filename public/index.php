@@ -20,6 +20,7 @@ View::init([
     'URL' => URL
 ]);
 
+
 // Inicia o roteador
 $obRouter = new Router(URL);
 

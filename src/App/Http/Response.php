@@ -5,25 +5,31 @@ namespace App\App\Http;
 class Response
 {
     private int $httpCode = 200;
-    private array $headers = [];
+    private array $headers;
     private string $contentType = 'text/html';
-    private string $content = '';
+    private string $content;
 
-    public function __construct(string $httpCode, mixed $content, mixed $contentType = 'text/html')
+    public function __construct(int $httpCode, mixed $content, mixed $contentType = 'text/html')
+    {
+        $this->setHttpCode(intval($httpCode));
+        $this->content = $content;
+        $this->setContentType($contentType);
+    }
+
+    public function setHttpCode($httpCode)
     {
         $this->httpCode = $httpCode;
-        $this->content = $content;
+    }
+
+    public function setContentType($contentType): void
+    {
         $this->contentType = $contentType;
+        $this->addHeader('Content-Type', $contentType);
     }
 
-    public function addHeaderContentType(): void
+    public function addHeader(string $chave, string $valor): void
     {
-        $this->addHeader('Content-Type', $this->getContentType());
-    }
-
-    public function addHeader(string $key, string $value): void
-    {
-        $this->headers[$key] = $value;
+        $this->headers[$chave] = $valor;
     }
 
     public function sendHeaders(): void
@@ -35,9 +41,8 @@ class Response
         }
     }
 
-    public function sendResponse()
-    {
-        //Método que imprime o conteúdo para o usuário
+    public function sendResponse(): void
+    { //Método repsonsável por enviar a resposta para o usuário "imprime o conteúdo"
 
         $this->sendHeaders();
 
@@ -47,10 +52,5 @@ class Response
                 echo $this->content;
                 exit;
         }
-    }
-
-    public function getContentType()
-    {
-        return $this->contentType;
     }
 }

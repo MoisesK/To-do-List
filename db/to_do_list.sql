@@ -13,14 +13,13 @@ SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHAtinyint
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHAtinyint*/
 --
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `todoes`
---
 
 CREATE TABLE `todoes` (
   `id` int NOT NULL,
@@ -33,7 +32,7 @@ CREATE TABLE `todoes` (
 --
 
 --
--- Índices de tabela `to-do`
+-- Índices de tabela `todoes`
 --
 ALTER TABLE `todoes`
   ADD PRIMARY KEY (`id`);
@@ -43,7 +42,7 @@ ALTER TABLE `todoes`
 --
 
 --
--- AUTO_INCREMENT de tabela `to-do`
+-- AUTO_INCREMENT de tabela `todoes`
 --
 ALTER TABLE `todoes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
