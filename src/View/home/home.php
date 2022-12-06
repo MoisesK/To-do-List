@@ -11,7 +11,9 @@
     <div class="container">
         <div class="row justify-content-center align-item-center pb-3">
             {{register-todo}}
+            <span id="resposta"></span>
         </div>
+        {{message}}
     </div>
 
     <div class="container pb-2 ">
@@ -27,15 +29,13 @@
             </tbody>
         </table>
 
-        <div class="d-flex container">
+        <div class="d-flex justify-content-center container">
             <div class="row pt-2">
-                <div class="col-6 me-3">
+                <div class="col-12 me-3">
                     <span class="badge bg-primary">Total de Tarefas: {{total}}</span>
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </div>

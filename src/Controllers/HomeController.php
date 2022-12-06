@@ -12,6 +12,7 @@ class HomeController
     {
         $content = View::render('home/home', [
             "register-todo" => View::render('home/registerTodo'),
+            "message" => get('message'),
             "items" => self::getTodoes(),
             "total" => self::getQtdTodoes("stats", 0)
         ]);
@@ -45,38 +46,29 @@ class HomeController
         return $todoes->readAdvanced("SELECT * FROM `todoes` WHERE '$column' = $value");
     }
 
-
-
-
     public static function actionsTodoes(Request $request)
     {
         $postVars = $request->getPostVars();
+        $queryParams = $request->getQueryParams();
 
         switch ($postVars) {
-            case isset($postVars['createButton']):
+            case isset($queryParams['createButton']):
+                $descript = filter_var($queryParams['descriptTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                $postVars = $request->getPostVars();
-                $descript = filter_var($postVars['descript-todo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $todo = new Todo($descript);
                 $todo->create($todo);
 
+                flash('message', 'Parabéns, Tarefa Adicionada!', 'success');
                 return self::getHome();
                 break;
 
             case isset($postVars['deleteButton']):
-
                 $todo = new Todo('');
                 $todo->delete($postVars['deleteButton']);
-
+                flash('message', 'Parabéns, Tarefa Concluída!', 'success');
                 return self::getHome();
                 break;
 
-            case isset($postVars['concludeButton']):
-                $todo = new Todo('');
-                $todo->conclude($postVars['concludeButton']);
-
-                return self::getHome();
-                break;
             default:
                 break;
         }

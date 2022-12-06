@@ -14,6 +14,13 @@ $obRouter->get('/', [
     }
 ]);
 
+$obRouter->get('/create', [
+    function () {
+        $request = new Request();
+        return new Response(200, HomeController::actionsTodoes($request));
+    }
+]);
+
 $obRouter->post('/', [
     function () {
         $request = new Request();

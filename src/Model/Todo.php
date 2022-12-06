@@ -88,7 +88,7 @@ class Todo
       $stmt->execute();
    }
 
-   public function conclude($id)
+   public function update($id)
    {
       $query = "UPDATE `todoes` SET stats = ? WHERE id = ?";
 
