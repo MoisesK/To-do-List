@@ -7,19 +7,15 @@ class Response
     private int $httpCode = 200;
     private array $headers;
     private string $contentType = 'text/html';
-    private string $content;
+    private mixed $content;
 
     public function __construct(int $httpCode, mixed $content, mixed $contentType = 'text/html')
     {
-        $this->setHttpCode(intval($httpCode));
+        $this->httpCode = intval($httpCode);
         $this->content = $content;
         $this->setContentType($contentType);
     }
 
-    public function setHttpCode($httpCode)
-    {
-        $this->httpCode = $httpCode;
-    }
 
     public function setContentType($contentType): void
     {

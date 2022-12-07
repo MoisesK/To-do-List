@@ -13,12 +13,14 @@ $("#buttonCad").on("click",function(){
             $("#resposta").html(processando);
         }
     }).done(function(r){
-        const resposta = "<div class='alert alert-success' role='alert'><p>Tarefa "+descript+" cadastrada com Sucesso!</p></div>";
+        const resposta = "Tarefa "+descript+" cadastrada com Sucesso!";
         $("#resposta").html(resposta);
         setTimeout(function(){
             location.reload(1)
-        },1000);
+        },3000);
     })
 
     console.log(descript);
 })
+
+//CONCLUI TAREFA
