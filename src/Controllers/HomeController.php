@@ -24,15 +24,17 @@ class HomeController
     public static function getTodoes()
     {
 
-        $todoes = new Todo('');
+        $todoes = new Todo('', '');
         $todoes->read();
         $items = '';
 
         foreach ($todoes->read() as $todo) {
             $items .= View::render('home/items', [
-                'descript' => $todo['descript'],
+                'title' => $todo['title'],
                 'actionsButton' => View::render('home/actionButtons', [
-                    'id' => $todo['id']
+                    'id' => $todo['id'],
+                    'title' => $todo['title']
+
                 ])
             ]);
         }
@@ -42,35 +44,37 @@ class HomeController
 
     public static function getQtdTodoes($column, $value)
     {
-        $todoes = new Todo('');
+        $todoes = new Todo('', '');
         return $todoes->readAdvanced("SELECT * FROM `todoes` WHERE '$column' = $value");
     }
 
-    public static function actionsTodoes(Request $request)
+    public static function newTodo(Request $request)
     {
+
         $postVars = $request->getPostVars();
-        $queryParams = $request->getQueryParams();
 
-        switch ($postVars) {
-            case isset($queryParams['createButton']):
-                $descript = filter_var($queryParams['descriptTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $title = filter_var($postVars['titleTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                $todo = new Todo($descript);
-                $todo->create($todo);
+        $todo = new Todo($title, '');
 
-                flash('message', 'Parabéns, Tarefa Adicionada!', 'success');
-                return self::getHome();
-                break;
+        $todo->create($todo);
 
-            case isset($postVars['deleteButton']):
-                $todo = new Todo('');
-                $todo->delete($postVars['deleteButton']);
-                flash('message', 'Parabéns, Tarefa Concluída!', 'success');
-                return self::getHome();
-                break;
+        flash('message', 'Parabéns, Tarefa Adicionada!', 'success');
+        return redirect("/");
+        return self::getHome();
+    }
 
-            default:
-                break;
-        }
+    public static function deleteTodo(Request $request)
+    {
+
+        $postVars = $request->getPostVars();
+
+        $todo = new Todo('', '');
+
+        $todo->delete($postVars['deleteButton']);
+        flash('message', "Tarefa " . $postVars['title'] . " Excluída!", 'danger');
+
+        return redirect("/");
+        return self::getHome();
     }
 }

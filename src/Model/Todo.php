@@ -8,17 +8,23 @@ use App\Library\Connection\Connect;
 class Todo
 {
    private int $id;
+   private string $title;
    private string $descript;
    private int $status = 0;
 
-   public function __construct(string $descript)
+   public function __construct(string $title, string $opDescript)
    {
-      $this->setDescript($descript);
+      $this->setTitle($title);
+      $this->setDescript($opDescript);
    }
 
    public function getId(): int
    {
       return $this->id;
+   }
+   public function getTitle(): string
+   {
+      return $this->title;
    }
 
 
@@ -30,6 +36,11 @@ class Todo
    public function getStatus(): string
    {
       return $this->status;
+   }
+
+   private function setTitle($t): void
+   {
+      $this->title = $t;
    }
 
    private function setDescript($d): void
@@ -44,11 +55,12 @@ class Todo
 
    public function create(Todo $todo): void
    {
-      $query = 'INSERT INTO `todoes` (descript, stats) VALUES (?,?)';
+      $query = 'INSERT INTO `todoes` (title, optional_descript, stats) VALUES (?,?,?)';
 
       $stmt = Connect::getConn()->prepare($query);
-      $stmt->bindValue(1, $todo->getDescript());
-      $stmt->bindValue(2, $todo->getStatus());
+      $stmt->bindValue(1, $todo->getTitle());
+      $stmt->bindValue(2, $todo->getDescript());
+      $stmt->bindValue(3, $todo->getStatus());
 
       $stmt->execute();
    }

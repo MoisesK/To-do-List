@@ -10,6 +10,13 @@ function refresh($time): void
     header("Refresh: $time.;");
 }
 
+//REDIRECIONAMENTO
+function redirect($url, $statusCode = 303)
+{
+    header('Location: ' . $url, true, $statusCode);
+    die();
+}
+
 //CRIA UMA FLASH MESSAGE
 function flash($key, $msg, $type = 'danger')
 {

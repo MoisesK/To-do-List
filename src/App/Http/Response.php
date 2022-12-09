@@ -9,7 +9,7 @@ class Response
     private string $contentType = 'text/html';
     private mixed $content;
 
-    public function __construct(int $httpCode, mixed $content, mixed $contentType = 'text/html')
+    public function __construct(string $httpCode, mixed $content, mixed $contentType = 'text/html')
     {
         $this->httpCode = intval($httpCode);
         $this->content = $content;
