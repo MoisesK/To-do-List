@@ -56,13 +56,7 @@ class HomeController
         $title = filter_var($postVars['titleTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $descript = '';
 
-        if (strlen($postVars['descriptTodo']) > 0) {
-            $descript = filter_var($postVars['descriptTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        } else {
-            $descript = 'Sem descrição!';
-        }
-
-        $todo = new Todo($title, $descript);
+        $todo = new Todo($title);
 
         $todo->create($todo);
 
