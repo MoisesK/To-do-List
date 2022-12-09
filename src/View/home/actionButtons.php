@@ -1,9 +1,16 @@
-<form method="post" class="d-flex justify-content-end">
-    <input type="hidden" name="title" value="{{title}}">
-    <button type="submit" name="deleteButton" value="{{id}}" class="btn btn-sm btn-success me-2">
-        X
-    </button>
-    <button type="submit" name="deleteButton" value="{{id}}" class="btn btn-sm btn-success me-2">
-        CONCLUÍDO
-    </button>
-</form>
+<div class="d-flex justify-content-end pt-2">
+
+    <form method="post" action="/delete" class="d-flex justify-content-end pt-2">
+        <input type="hidden" name="title" value="{{title}}">
+        <button type="submit" name="deleteButton" value="{{id}}" class="btn btn-sm btn-danger me-2">
+            <i class="bi bi-trash3"></i>
+        </button>
+    </form>
+
+    <form method="post" action="/conclude" class="d-flex justify-content-end pt-2">
+        <input type="hidden" name="title" value="{{title}}">
+        <button type="submit" name="concludeButton" value="{{id}}" class="btn btn-sm btn-success me-2">
+            <i class="bi bi-check2"></i>
+        </button>
+    </form>
+</div>

@@ -67,7 +67,7 @@ class Todo
 
    public function read(): mixed
    {
-      $query = "SELECT * FROM `todoes` WHERE 'stats' = 0";
+      $query = "SELECT * FROM `todoes` WHERE stats = '0'";
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->execute();

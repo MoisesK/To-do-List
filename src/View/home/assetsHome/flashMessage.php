@@ -1,3 +1,3 @@
 <div class="alert alert-{{type}}" role="alert">
-    <p>{{message}}</p>
+    <p class="justify-content-center fs-5">{{message}}</p>
 </div>

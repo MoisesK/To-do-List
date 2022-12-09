@@ -1,4 +1,9 @@
-<form method="POST" action="/create" class="col-auto d-flex justify-content-center align-items-center">
-    <input class="form-control p-3 text-center fs-6" type="text" id="title-todo" name="titleTodo" placeholder="Adicione uma tarefa!" id="descript" required>
-    <button type="submit" id="buttonCad" name="createButton" class="btn btn-primary px-3 ms-2 font-weight-bold fs-2">+</button>
+<form method="POST" action="/create" class="col-auto">
+    <div class="d-flex">
+        <input class="form-control text-center fs-4" type="text" id="title-todo" name="titleTodo" placeholder="Qual é a Tarefa?" id="descript" required>
+    </div>
+
+    <div class="d-flex justify-content-center mt-2">
+        <button type="submit" id="buttonCad" name="createButton" class="btn btn-primary px-3 ms-2 font-weight-bold fs-5">Cadastrar</button>
+    </div>
 </form>

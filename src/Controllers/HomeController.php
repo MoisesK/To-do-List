@@ -14,7 +14,8 @@ class HomeController
             "register-todo" => View::render('home/registerTodo'),
             "message" => get('message'),
             "items" => self::getTodoes(),
-            "total" => self::getQtdTodoes("stats", 0)
+            "total" => self::getQtdTodoes("stats", '0'),
+            "totalConclude" => self::getQtdTodoes("stats", '1'),
         ]);
 
         return View::getPage('TO-DO HOME', $content);
@@ -34,7 +35,6 @@ class HomeController
                 'actionsButton' => View::render('home/actionButtons', [
                     'id' => $todo['id'],
                     'title' => $todo['title']
-
                 ])
             ]);
         }
@@ -45,7 +45,7 @@ class HomeController
     public static function getQtdTodoes($column, $value)
     {
         $todoes = new Todo('', '');
-        return $todoes->readAdvanced("SELECT * FROM `todoes` WHERE '$column' = $value");
+        return $todoes->readAdvanced("SELECT * FROM `todoes` WHERE $column = $value");
     }
 
     public static function newTodo(Request $request)
@@ -54,8 +54,15 @@ class HomeController
         $postVars = $request->getPostVars();
 
         $title = filter_var($postVars['titleTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $descript = '';
 
-        $todo = new Todo($title, '');
+        if (strlen($postVars['descriptTodo']) > 0) {
+            $descript = filter_var($postVars['descriptTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            $descript = 'Sem descrição!';
+        }
+
+        $todo = new Todo($title, $descript);
 
         $todo->create($todo);
 
@@ -72,8 +79,21 @@ class HomeController
         $todo = new Todo('', '');
 
         $todo->delete($postVars['deleteButton']);
-        flash('message', "Tarefa " . $postVars['title'] . " Excluída!", 'danger');
+        flash('message', "Tarefa " . $postVars['title'] . " excluída!", 'danger');
 
+        return redirect("/");
+        return self::getHome();
+    }
+
+    public static function concludeTodo(Request $request)
+    {
+
+        $postVars = $request->getPostVars();
+
+        $todo = new Todo('', '');
+        $todo->update($postVars['concludeButton']);
+
+        flash('message', "Parabéns, " . $postVars['title'] . " concluída!", 'success');
         return redirect("/");
         return self::getHome();
     }
