@@ -1,7 +1,7 @@
 <?php
-
+//*********//
 // HELPERS //
-
+//*********//
 use App\App\Util\View;
 
 //RECARREGAR PÁGINA
@@ -20,7 +20,8 @@ function redirect($url, $statusCode = 303)
 //CRIA UMA FLASH MESSAGE
 function flash($key, $msg, $type = 'danger')
 {
-    $msgRender = View::render('home/assetsHome/flashMessage', [
+    $view = new View();
+    $msgRender = $view->render('home/assetsHome/flashMessage', [
         "message" => $msg,
         "type" => $type
     ]);

@@ -4,15 +4,15 @@ namespace App\App\Util;
 
 class View
 {
-    private static array $vars;
+    public array $vars = [];
 
-    public static function init(array $vars = [])
+    public function init(array $vars = [])
     {
         //Método responsável por definir dados como URL(exemplo).
-        self::$vars = $vars;
+        $this->$vars = $vars;
     }
 
-    public static function getContentView($view): string
+    public function getContentView($view): string
     {
         $archive = __DIR__ . '/../../View/' . $view . '.php';
 
@@ -20,11 +20,11 @@ class View
         return file_exists($archive) ? file_get_contents($archive) : '';
     }
 
-    public static function render(string $view, array $vars = []): string
+    public function render(string $view, array $vars = []): string
     {
-        $contentView = self::getContentView($view);
+        $contentView = $this->getContentView($view);
 
-        $vars = array_merge(self::$vars, $vars);
+        $vars = array_merge($this->vars, $vars);
 
         $keys = array_keys($vars);
         $keys = array_map(function ($item) {
@@ -39,28 +39,28 @@ class View
         );
     }
 
-    public static function getPage(string $title, mixed $content): mixed
+    public function getPage(string $title, mixed $content): mixed
     {
         //método que retorna a página genérica
-        return self::render(
+        return $this->render(
             'layout/page',
             [
-                "header" => self::getHeader(),
+                "header" => $this->getHeader(),
                 "title" => $title,
                 "content" => $content,
-                "footer" => self::getFooter()
+                "footer" => $this->getFooter()
 
             ]
         );
     }
 
-    private static function getHeader(): string
+    private function getHeader(): string
     {
-        return self::render("layout/header");
+        return $this->render("layout/header");
     }
 
-    private static function getFooter(): string
+    private function getFooter(): string
     {
-        return self::render("layout/footer");
+        return $this->render("layout/footer");
     }
 }

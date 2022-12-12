@@ -10,14 +10,16 @@ use App\Controllers\HomeController;
 // ROTA HOME
 $obRouter->get('/', [
     function () {
-        return new Response(200, HomeController::getHome());
+        $home = new HomeController();
+        return new Response(200, $home->getHome());
     }
 ]);
 
 $obRouter->post('/create', [
     function () {
+        $home = new HomeController();
         $request = new Request();
-        return new Response(200, HomeController::newTodo($request));
+        return new Response(200, $home->newTodo($request));
 
         die();
     }
@@ -25,14 +27,16 @@ $obRouter->post('/create', [
 
 $obRouter->post('/delete', [
     function () {
+        $home = new HomeController();
         $request = new Request();
-        return new Response(200, HomeController::deleteTodo($request));
+        return new Response(200, $home->deleteTodo($request));
     }
 ]);
 
 $obRouter->post('/conclude', [
     function () {
+        $home = new HomeController();
         $request = new Request();
-        return new Response(200, HomeController::concludeTodo($request));
+        return new Response(200, $home->concludeTodo($request));
     }
 ]);

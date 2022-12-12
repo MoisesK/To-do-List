@@ -8,31 +8,32 @@ use App\Model\Todo;
 
 class HomeController
 {
-    public static function getHome()
+    public function getHome()
     {
-        $content = View::render('home/home', [
-            "register-todo" => View::render('home/registerTodo'),
+        $view = new View();
+        $content = $view->render('home/home', [
+            "register-todo" => $view->render('home/registerTodo'),
             "message" => get('message'),
-            "items" => self::getTodoes(),
-            "total" => self::getQtdTodoes("stats", '0'),
-            "totalConclude" => self::getQtdTodoes("stats", '1'),
+            "items" => $this->getTodoes(),
+            "total" => $this->getQtdTodoes("stats", '0'),
+            "totalConclude" => $this->getQtdTodoes("stats", '1'),
         ]);
 
-        return View::getPage('TO-DO HOME', $content);
+        return $view->getPage('TO-DO HOME', $content);
     }
 
 
-    public static function getTodoes()
+    public function getTodoes()
     {
-
+        $view = new View();
         $todoes = new Todo('', '');
         $todoes->read();
         $items = '';
 
         foreach ($todoes->read() as $todo) {
-            $items .= View::render('home/items', [
+            $items .= $view->render('home/items', [
                 'title' => $todo['title'],
-                'actionsButton' => View::render('home/actionButtons', [
+                'actionsButton' => $view->render('home/actionButtons', [
                     'id' => $todo['id'],
                     'title' => $todo['title']
                 ])
@@ -42,13 +43,13 @@ class HomeController
         return $items;
     }
 
-    public static function getQtdTodoes($column, $value)
+    public function getQtdTodoes($column, $value)
     {
         $todoes = new Todo('', '');
         return $todoes->readAdvanced("SELECT * FROM `todoes` WHERE $column = $value");
     }
 
-    public static function newTodo(Request $request)
+    public function newTodo(Request $request)
     {
 
         $postVars = $request->getPostVars();
@@ -61,10 +62,10 @@ class HomeController
 
         flash('message', 'Parabéns, Tarefa Adicionada!', 'success');
         return redirect("/");
-        return self::getHome();
+        return $this->getHome();
     }
 
-    public static function deleteTodo(Request $request)
+    public function deleteTodo(Request $request)
     {
 
         $postVars = $request->getPostVars();
@@ -75,10 +76,10 @@ class HomeController
         flash('message', "Tarefa " . $postVars['title'] . " excluída!", 'danger');
 
         return redirect("/");
-        return self::getHome();
+        return $this->getHome();
     }
 
-    public static function concludeTodo(Request $request)
+    public function concludeTodo(Request $request)
     {
 
         $postVars = $request->getPostVars();
@@ -88,6 +89,6 @@ class HomeController
 
         flash('message', "Parabéns, " . $postVars['title'] . " concluída!", 'success');
         return redirect("/");
-        return self::getHome();
+        return $this->getHome();
     }
 }

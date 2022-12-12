@@ -16,10 +16,10 @@ Environment::load(__DIR__ . '/../');
 define('URL', getenv('URL'));
 
 //Definir valor padrão de variaveis
-View::init([
+$view = new View();
+$view->init([
     'URL' => URL
 ]);
-
 
 // Inicia o roteador
 $obRouter = new Router(URL);
