@@ -3,7 +3,7 @@
         'name' => 'moises/to-do-list',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5f1bed0ca77dfa15e32826015b97d0e9c6e20473',
+        'reference' => '6ebdae8d59a20d6ae8c67fc5f0df256922fb763e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'moises/to-do-list' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5f1bed0ca77dfa15e32826015b97d0e9c6e20473',
+            'reference' => '6ebdae8d59a20d6ae8c67fc5f0df256922fb763e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

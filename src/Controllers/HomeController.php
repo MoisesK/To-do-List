@@ -54,7 +54,6 @@ class HomeController
         $postVars = $request->getPostVars();
 
         $title = filter_var($postVars['titleTodo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $descript = '';
 
         $todo = new Todo($title);
 

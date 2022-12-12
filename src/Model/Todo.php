@@ -47,11 +47,11 @@ class Todo
 
    public function create(Todo $todo): void
    {
-      $query = 'INSERT INTO `todoes` (title, stats) VALUES (?,?,)';
+      $query = 'INSERT INTO `todoes` (title, stats) VALUES (?,?)';
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->bindValue(1, $todo->getTitle());
-      $stmt->bindValue(3, $todo->getStatus());
+      $stmt->bindValue(2, $todo->getStatus());
 
       $stmt->execute();
    }
