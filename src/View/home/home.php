@@ -34,9 +34,24 @@
                 <div class="col-12 me-3">
                     <span class="badge bg-primary">Total de Tarefas: {{total}}</span>
                     <span class="badge bg-success">Concluídas: {{totalConclude}}</span>
-
+                    <button id="mostraTodoesCompleted" class="btn btn-sm btn-success">+</button>
+                    <button id="ocultaTodoesCompleted" class="btn btn-sm btn-success" style="display: none; ">-</button>
                 </div>
             </div>
+        </div>
+
+        <div id="itemsCompleted" class="container mt-2 pb-2" style="display:none;">
+            <table class="col-auto shadow table">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col-8">Titulo</th>
+                        <th scope="col-8"></th>
+                    </tr>
+                </thead>
+                <tbody class="col-auto">
+                    {{completedTasks}}
+                </tbody>
+            </table>
         </div>
 
     </div>

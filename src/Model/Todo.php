@@ -56,9 +56,9 @@ class Todo
       $stmt->execute();
    }
 
-   public function read(): mixed
+   public function read($column, $value = 0): mixed
    {
-      $query = "SELECT * FROM `todoes` WHERE stats = '0'";
+      $query = "SELECT * FROM `todoes` WHERE $column = $value";
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->execute();
@@ -71,12 +71,13 @@ class Todo
       };
    }
 
-   public function readAdvanced($query): mixed
+   public function readQtdTodoes($query): mixed
    {
       $query = $query;
 
       $stmt = Connect::getConn()->prepare($query);
       $stmt->execute();
+
 
       return $stmt->rowCount();
    }

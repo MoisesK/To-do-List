@@ -18,12 +18,13 @@ function redirect($url, $statusCode = 303)
 }
 
 //CRIA UMA FLASH MESSAGE
-function flash($key, $msg, $type = 'danger')
+function flash($key, $msg, $type = 'danger', $icon = 'bi-calendar-x')
 {
     $view = new View();
     $msgRender = $view->render('home/assetsHome/flashMessage', [
         "message" => $msg,
-        "type" => $type
+        "type" => $type,
+        "icon" => $icon
     ]);
 
     if (!isset($_SESSION['flash'][$key])) {
@@ -38,8 +39,7 @@ function get($key)
         $message = $_SESSION['flash'][$key];
 
         unset($_SESSION['flash'][$key]);
-        refresh(2);
-
+        refresh(5);
         return $message ?? '';
     }
 }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Tempo de geração: 09-Dez-2022 às 19:52
+-- Tempo de geração: 12/12/2022 às 23:54
 -- Versão do servidor: 8.0.31
--- versão do PHP: 8.0.19
+-- Versão do PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `todoes`
+-- Estrutura para tabela `todoes`
 --
 
 CREATE TABLE `todoes` (
   `id` int NOT NULL,
   `title` varchar(200) NOT NULL,
-  `stats` tinyint(1) NOT NULL
+  `stats` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -38,20 +38,20 @@ CREATE TABLE `todoes` (
 --
 
 --
--- Índices para tabela `todoes`
+-- Índices de tabela `todoes`
 --
 ALTER TABLE `todoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `todoes`
 --
 ALTER TABLE `todoes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
